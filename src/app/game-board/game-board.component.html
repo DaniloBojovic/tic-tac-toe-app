@@ -1,0 +1,19 @@
+<!-- game-board.component.html -->
+<div class="container">
+  <div class="board">
+    <div *ngFor="let row of gameService.board; let i = index">
+      <div
+        *ngFor="let cell of row; let j = index"
+        [class.winning-cell]="winningLine?.includes(i * 3 + j)"
+        (click)="makeMove(i, j)"
+        class="cell"
+      >
+        {{ cell }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="gameStatus === 'WIN'" class="win-message">
+    <span class="balloon">🎈</span> WIN <span class="balloon">🎈</span>
+  </div>
+</div>
