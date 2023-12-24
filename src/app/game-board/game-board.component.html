@@ -16,4 +16,11 @@
   <div *ngIf="gameStatus === 'WIN'" class="win-message">
     <span class="balloon">🎈</span> WIN <span class="balloon">🎈</span>
   </div>
+  <button
+    *ngIf="showStartNewGameButton"
+    class="start-new-game-button"
+    (click)="startNewGame()"
+  >
+    Start New Game
+  </button>
 </div>

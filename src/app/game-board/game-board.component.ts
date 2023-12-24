@@ -9,6 +9,8 @@ import { GameBoardService } from './game-board.service';
 export class GameBoardComponent {
   gameStatus: string = '';
   winningLine: number[] | null = null;
+  gameWon = false;
+  showStartNewGameButton = false;
 
   constructor(public gameService: GameBoardService) {}
 
@@ -18,7 +20,17 @@ export class GameBoardComponent {
       this.winningLine = this.gameService.checkWin();
       if (this.winningLine) {
         this.gameStatus = 'WIN';
+        setTimeout(() => {
+          this.showStartNewGameButton = true;
+        }, 5000);
       }
     }
+  }
+  startNewGame() {
+    this.gameService.newGame();
+    this.showStartNewGameButton = false;
+    this.gameWon = false;
+    this.gameStatus = '';
+    this.winningLine = null;
   }
 }
